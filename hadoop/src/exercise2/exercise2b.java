@@ -33,7 +33,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 public class exercise2b extends Configured implements Tool {	
    
-   private enum ONLY_WORD_COUNTER {
+   private enum uniques {
 		  pg100,
 		  pg1120,
 		  pg1513,
@@ -87,17 +87,17 @@ public class exercise2b extends Configured implements Tool {
       Integer i;
       PrintWriter writer = new PrintWriter(args[3], "UTF-8");
      // PrintWriter writer = new PrintWriter("./outdocs2/exerb/", "UTF-8");
-      i = (int) job.getCounters().findCounter(ONLY_WORD_COUNTER.pg100).getValue();
+      i = (int) job.getCounters().findCounter(uniques.pg100).getValue();
       writer.println("pg100: "+i.toString()+"\n");
-      i = (int) job.getCounters().findCounter(ONLY_WORD_COUNTER.pg1120).getValue();
+      i = (int) job.getCounters().findCounter(uniques.pg1120).getValue();
       writer.println("pg1120: "+i.toString()+"\n");
-      i = (int) job.getCounters().findCounter(ONLY_WORD_COUNTER.pg1513).getValue();
+      i = (int) job.getCounters().findCounter(uniques.pg1513).getValue();
       writer.println("pg1513: "+i.toString()+"\n");
-      i = (int) job.getCounters().findCounter(ONLY_WORD_COUNTER.pg2253).getValue();
+      i = (int) job.getCounters().findCounter(uniques.pg2253).getValue();
       writer.println("pg2253: "+i.toString()+"\n");
-      i = (int) job.getCounters().findCounter(ONLY_WORD_COUNTER.pg3200).getValue();
+      i = (int) job.getCounters().findCounter(uniques.pg3200).getValue();
       writer.println("pg3200: "+i.toString()+"\n");
-      i = (int) job.getCounters().findCounter(ONLY_WORD_COUNTER.pg31100).getValue();
+      i = (int) job.getCounters().findCounter(uniques.pg31100).getValue();
       writer.println("pg31100: "+i.toString()+"\n");
       writer.flush();
       writer.close();
@@ -170,19 +170,19 @@ public class exercise2b extends Configured implements Tool {
         	 switch (filename)
         	 {
 	        	 case "pg100.txt":
-	        		 context.getCounter(ONLY_WORD_COUNTER.pg100).increment(1);
+	        		 context.getCounter(uniques.pg100).increment(1);
 	        		 break;
 	        	 case "pg1120.txt":
-	        		 context.getCounter(ONLY_WORD_COUNTER.pg1120).increment(1);
+	        		 context.getCounter(uniques.pg1120).increment(1);
 	        		 break;
 	        	 case "pg1513.txt":
-	        		 context.getCounter(ONLY_WORD_COUNTER.pg1513).increment(1);
+	        		 context.getCounter(uniques.pg1513).increment(1);
 	        		 break;
 	        	 case "pg3200.txt":
-	        		 context.getCounter(ONLY_WORD_COUNTER.pg3200).increment(1);
+	        		 context.getCounter(uniques.pg3200).increment(1);
 	        		 break;
 	        	 case "pg31100.txt":
-	    		     context.getCounter(ONLY_WORD_COUNTER.pg31100).increment(1);
+	    		     context.getCounter(uniques.pg31100).increment(1);
 	    		     break;
 	        	 }
         	 }
