@@ -45,10 +45,10 @@ public class exercise1 extends Configured implements Tool {
       job.setJobName("Find StopWords");
       
       
-   //   FileInputFormat.addInputPath(job, new Path("./docs/pg*.txt"));
-  //   FileOutputFormat.setOutputPath(job, new Path("./outdocs/"));
+     //   FileInputFormat.addInputPath(job, new Path("./docs/pg*.txt"));
+     //   FileOutputFormat.setOutputPath(job, new Path("./outdocs/"));
       FileInputFormat.addInputPath(job, new Path(args[0]));
-    //   FileInputFormat.setInputPaths(job, new Path(args[0]));
+     //   FileInputFormat.setInputPaths(job, new Path(args[0]));
      FileOutputFormat.setOutputPath(job, new Path(args[1] + "/exer1"));
       
       job.setMapperClass(wordMap.class);
@@ -58,17 +58,17 @@ public class exercise1 extends Configured implements Tool {
       job.setOutputKeyClass(Text.class);
       job.setOutputValueClass(IntWritable.class);
 
-      job.setNumReduceTasks(10);
+     // job.setNumReduceTasks(10);
       
       job.setInputFormatClass(TextInputFormat.class);
       job.setOutputFormatClass(TextOutputFormat.class);
     
-      //to job aka "anixneytis twn stopwords>4000" mpainei sto controlledJob 
+
       ControlledJob controlledJob = new ControlledJob(conf1);
       controlledJob.setJob(job);
       jobControl.addJob(controlledJob);
 
-      //JOB No2 Gia na kanei ligo invert xamo kai na kanei ta stopwords sort kata syxnotita >> no1=to top stopword  p.x 1224 and 1020 as 
+      //JOB No2 Gia na kanei invert ta key,value kai na kanei ta stopwords sort kata syxnotita >> no1=to top stopword  p.x 1224 and 1020 as 
       Configuration conf2 = getConf();
       conf2.set("mapred.textoutputformat.separator", ",");
       Job job1 = Job.getInstance(conf2);
