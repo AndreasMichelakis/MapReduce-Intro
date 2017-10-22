@@ -63,9 +63,9 @@ public class exercise3 extends Configured implements Tool {
 
       job.setMapperClass(Map.class);
       job.setReducerClass(Reduce.class);
-      job.setCombinerClass(Reduce.class);
+      //job.setCombinerClass(Reduce.class);
 
-      job.setNumReduceTasks(10);
+      //job.setNumReduceTasks(10);
       
       job.setInputFormatClass(TextInputFormat.class);
       job.setOutputFormatClass(TextOutputFormat.class);
@@ -158,33 +158,5 @@ public class exercise3 extends Configured implements Tool {
          context.write(key, value);
       }
    }   
-   public static class TextArray extends ArrayWritable {
-	    public TextArray(Text[] arr) {
-	        super(Text.class);
-	    }
-
-	    @Override
-	    public Text[] get() {
-	        return (Text[]) super.get();
-	    }
-
-	    @Override
-	    public void write(DataOutput arg0) throws IOException {
-	        for(Text data : get()){
-	            data.write(arg0);
-	        }
-	    }
-	    
-	    @Override
-	    public String toString() {
-	        Text[] values = get();
-	        String output = new String();
-	        for (Text t: values){
-		        output += t.toString();
-		        output += ",";
-	        }
-	        output = output.substring(0, output.length()-1);
-	        return output;
-	    }
-   }
+   
 }
